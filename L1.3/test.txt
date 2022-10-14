@@ -1,0 +1,5 @@
+This is a testfile for the spellchecker app. Any mispelled wordz should get recognized and outputtet into the ocnosle.
+There the programmm also shows a suggestion of how to actually write the word. It does this by first storing all words formedt
+the dictionary into a string vector, which we then sort. However since the dictionary itself is sorted this step can be skipped.
+Then we take one word as input after another and search for it int the vector which contains all words from the dictionary. If it cannot find
+the word, then it must be mispelled.
