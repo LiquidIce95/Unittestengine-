@@ -50,8 +50,13 @@ int main(){
 
     //T5
     series1.asser("T5",true,z<=r);
-
+    //T6
     series1.asser("T6",false, z>r);
+
+    //T7
+    z = frac(1,2);
+    r = frac(3,5);
+    series1.asser("T7",true, z<r);
 
     series1.feedback();
 

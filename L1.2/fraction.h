@@ -112,16 +112,16 @@ class frac{
         }
 
         bool operator<(frac b){
-            float h = this->c/this->d;
-            float g = b.c/b.d;
+            int ac = this->c*b.d;
+            int bc = b.c * this->d;
 
-            return (h<g);
+            return (ac<bc);
         }
         bool operator>(frac b){
-            float h = this->c/this->d;
-            float g = b.c/b.d;
+            int ac = this->c*b.d;
+            int bc = b.c * this->d;
 
-            return (h>g);
+            return (ac>bc);
         }
 
         bool operator<=(frac b){
