@@ -31,7 +31,7 @@ class frac{
             }
             return abs(a);
         }
-        //New default constructor
+        //New constructor
         frac(int a, int b){
             int gd = gcd(a,b);
 
@@ -44,6 +44,9 @@ class frac{
                 this->d = b;
             }
 
+        }
+        frac(){
+            
         }
         //Operations
         frac operator*(frac b){
@@ -111,6 +114,7 @@ class frac{
             }
         }
 
+        
         bool operator<(frac b){
             int ac = this->c*b.d;
             int bc = b.c * this->d;
@@ -135,6 +139,10 @@ class frac{
         }
 
 };
+
+bool operator==(const frac& a, const frac& b){
+    return (a==b);
+}
 
 //input and output, cannot be static members of a class (apparently)
 ostream& operator<<(ostream& os, const frac& f){

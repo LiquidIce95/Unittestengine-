@@ -14,14 +14,14 @@ std::ostream& operator<<(std::ostream& os, const std::vector<T> v){
 }
 
 class TestCase {
-    //converts types into string , so we can append to messages, << operator needs to be defined for tpye T
-    template<class T> std::string tostring(const T& t) {
-	    std::ostringstream ss;
-	    ss << t;
-	    return ss.str();
-    }
 
     public:
+        //converts types into string , so we can append to messages, << operator needs to be defined for tpye T
+        template<class T> std::string tostring(const T& t) {
+            std::ostringstream ss;
+            ss << t;
+            return ss.str();
+        }
         std::vector<bool> tests;
         std::vector<std::string> msgs;
 
