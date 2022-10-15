@@ -114,6 +114,16 @@ int main(){
         test = {a};
 
         s.asser("T5",test,stack);
+
+        frac b = frac(7,8);
+        RPN("n 7 8",stack,output);
+        test = {a,b};
+        s.asser("T6",test,stack);
+
+        RPN("+",stack,output);
+        test2 = {a+b};
+        s.asser("T7",test2,output);
+
     }
     
 

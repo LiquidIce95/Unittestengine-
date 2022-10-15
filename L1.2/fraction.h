@@ -7,18 +7,17 @@ using namespace std;
 //Class for rational numbers
 class frac{
 
-    void reduce(frac& g){
-        //figuring out gcd
-        int a = gcd(g.c,g.d);
-
-        if(!(a==0)){
-            g.c = g.c/a;
-            g.d = g.d/a;
-        } 
-    }
-
-
     public:
+        void reduce(frac& g){
+            //figuring out gcd
+            int a = gcd(g.c,g.d);
+
+            if(!(a==0)){
+                g.c = g.c/a;
+                g.d = g.d/a;
+            } 
+        }
+
         int c;
         int d;
         // need this for equality
@@ -106,6 +105,9 @@ class frac{
         //relational operators
         //this equality is not quite correct, since it excludes multiples
         bool operator==(frac b){
+            reduce(*this);
+            reduce(b);
+
             if(this->c == b.c && this->d == b.d){
                 return true;
             }
@@ -141,7 +143,13 @@ class frac{
 };
 
 bool operator==(const frac& a, const frac& b){
-    return (a==b);
+      
+    if(a.c == b.c && a.d == b.d){
+        return true;
+    }
+    else {
+        return false;
+    }
 }
 
 //input and output, cannot be static members of a class (apparently)
