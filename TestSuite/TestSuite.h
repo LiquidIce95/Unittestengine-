@@ -4,6 +4,15 @@
 #include <sstream>
 #include <iostream>
 
+template <typename T>
+std::ostream& operator<<(std::ostream& os, const std::vector<T> v){
+
+    for( int i = 0; i < v.size();++i){
+        os<<v.at(i);
+    }
+    return os;
+}
+
 class TestCase {
     //converts types into string , so we can append to messages, << operator needs to be defined for tpye T
     template<class T> std::string tostring(const T& t) {
