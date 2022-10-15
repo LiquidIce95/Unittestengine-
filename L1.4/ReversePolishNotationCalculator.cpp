@@ -1,10 +1,9 @@
 #include <iostream>
 #include <vector>
+#include </home/Dave/Dokumente/projects/c++/UZH_Advanced_C++/TestSuite/TestSuite.h>
 
-void RPN(std::string input){
 
-
-    std::vector<double> stack;
+void RPN(std::string input,std::vector<double>& stack){
 
 
     while(input != "q"){
@@ -51,8 +50,15 @@ void RPN(std::string input){
 
 int main(){
 
+    TestCase s;
 
-    
+    std::vector<double> stack;
+
+    std::vector<double> test;
+    //T1
+    RPN("n 2.3",stack);
+    test.push_back(2.3);
+    s.asser("T1",test,stack);
 
 
     return 0;

@@ -1,6 +1,6 @@
 #include </home/Dave/Dokumente/projects/c++/UZH_Advanced_C++/L1.2/fraction.h>
 #include <iostream>
-#include </home/Dave/Dokumente/projects/c++/UZH_Advanced_C++/Testing/TestSuite.h>
+#include </home/Dave/Dokumente/projects/c++/UZH_Advanced_C++/TestSuite/TestSuite.h>
 #include <sstream>
 
 //testing
