@@ -3,6 +3,7 @@
 #include <vector>
 #include <sstream>
 #include <iostream>
+#include <chrono>
 
 template <typename T>
 std::ostream& operator<<(std::ostream& os, const std::vector<T> v){
@@ -15,6 +16,8 @@ std::ostream& operator<<(std::ostream& os, const std::vector<T> v){
 
 class TestCase {
 
+    std::chrono::duration<double> time;
+
     public:
         //converts types into string , so we can append to messages, << operator needs to be defined for tpye T
         template<class T> std::string tostring(const T& t) {
@@ -26,6 +29,8 @@ class TestCase {
         std::vector<std::string> msgs;
 
         void asser(std::string testname , auto correct, auto output){
+
+            auto start = std::chrono::high_resolution_clock::now();
 
             const std::string red("\033[1;31m");
             const std::string green("\033[1;32m");
@@ -49,7 +54,11 @@ class TestCase {
                 this->tests.push_back(false);
                 this->msgs.push_back(testname+" ERROR occured"+e.what());
             }
-            
+            auto finish = std::chrono::high_resolution_clock::now();
+
+            std::chrono::duration<double> elapsed = finish - start;
+
+            this->time += elapsed;
         }
 
         void feedback(){
@@ -61,6 +70,10 @@ class TestCase {
             if(msgs.size()==0){
                 std::cout<<"All tests were successful!"<<std::endl;
             }
+
+            std::cout<<std::chrono::duration_cast<std::chrono::microseconds>(this->time).count()<<" microsseconds total time "<<std::endl;
+            std::cout<<std::chrono::duration_cast<std::chrono::milliseconds>(this->time).count()<<" milliseconds total time "<<std::endl;
+
         }
 
 };
