@@ -27,8 +27,9 @@ class TestCase {
         }
         std::vector<bool> tests;
         std::vector<std::string> msgs;
-
-        void asser(std::string testname , auto correct, auto output){
+        
+        template<typename CorrectType, typename OutputType>
+        void asser(std::string testname , CorrectType correct, OutputType output){
 
             auto start = std::chrono::high_resolution_clock::now();
 
@@ -39,10 +40,12 @@ class TestCase {
 
             try {
                 if(correct == output){
-                    std::cout<<green<<"."<<reset;
+                    std::cout<<green<<"● "<<reset;
                     this->tests.push_back(true);
+                    std::string message = testname+" SUCCESS ";
+                    this->msgs.push_back(message);
                 } else {
-                    std::cout<<red<<"."<<reset;
+                    std::cout<<red<<"● "<<reset;
                     this->tests.push_back(false);
                     std::string message = testname+" FAILED ,expected: "+tostring(correct)+" actual: "+tostring(output);
                     this->msgs.push_back(message);
@@ -57,6 +60,8 @@ class TestCase {
             auto finish = std::chrono::high_resolution_clock::now();
 
             std::chrono::duration<double> elapsed = finish - start;
+
+            this->msgs[msgs.size()-1] += ", time in miliseconds for this test : "+tostring(std::chrono::duration_cast<std::chrono::milliseconds>(elapsed).count());
 
             this->time += elapsed;
         }
